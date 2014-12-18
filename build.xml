@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SampleRSSE" default="pack.all" basedir=".">
+    <property name="output" location="bin"/>
+    <property name="rsse.wsdl" location="wsdl/RSSE.wsdl"/>
+    <!--property name="rsse.wsdl" value="http://${hostName}:${port}/wsdl/v11/axis/all"/-->
+    <target name="get.params" description="Get input parameters">
+        <condition property="output" value="${var.output}">
+            <isset property="var.output"/>
+        </condition>
+    </target>
+    <target name="cleanup" depends="get.params" description="Cleanup">
+        <delete dir="${output}"/>
+        <delete dir="resources"/>
+    </target>
+    <target name="init" depends="cleanup" description="Common initialization">
+        <path id="path.libs">
+            <fileset dir="lib">
+                <include name="gson*.jar"/>
+            </fileset>
+            <fileset dir="lib/axis2">
+                <include name="**/*.jar"/>
+            </fileset>
+        </path>
+        <mkdir dir="${output}"/>
+        <taskdef name="axis2-wsdl2java" classname="org.apache.axis2.tool.ant.AntCodegenTask" classpathref="path.libs"/>
+    </target>
+    <target name="build.all" depends="init" description="Generate Axis2 proxy classes and build everything">
+        <!-- Set serverSideInterface=true to recreate interface classes -->
+        <!-- Set generateServiceXml=true to recreate service XML file -->
+        <axis2-wsdl2java wsdlfilename="${rsse.wsdl}" output="." testcase="no" unpackClasses="true" databindingName="adb" syncOnly="true" serverSide="true" serverSideInterface="false" generateServiceXml="true"/>
+        <!-- Remove auto-generated skeleton classes -->
+        <delete dir="src/com/actuate/schemas/actuate11/rsse/wsdl">
+            <!--fileset dir="src/com/actuate/schemas/actuate11/rsse/wsdl" includes="RSSEAPI*.java"/-->
+        </delete>
+        <javac debug="true" debuglevel="lines,source" includeantruntime="false" encoding="UTF8" srcdir="src" destdir="${output}" classpathref="path.libs"/>
+    </target>
+    <target name="pack.all" depends="build.all" description="Create a package for deployment">
+        <jar jarfile="${output}/SampleRSSE.aar" basedir="${output}" includes="**"/>
+        <jar jarfile="${output}/SampleRSSE.aar" basedir="src" update="true" includes="META-INF/**, *.*"/>
+    </target>
+</project>

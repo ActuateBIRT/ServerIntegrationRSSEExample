@@ -1,0 +1,220 @@
+{
+  "DEFAULT VOLUME": {
+    "name": "DEFAULT VOLUME",
+    "users": {
+      "ADMINISTRATOR": {
+        "volume": "DEFAULT VOLUME",
+        "name": "Administrator",
+        "password": "",
+        "emailAddress": "Administrator@xyz.com",
+        "homeFolder": "/Home/Administrator",
+        "maxJobPriority": 1000,
+        "sendNoticeForSuccess": false,
+        "sendNoticeForFailure": true,
+        "successNoticeExpiration": 300,
+        "failureNoticeExpiration": -1,
+        "sendEmailForSuccess": false,
+        "sendEmailForFailure": true,
+        "attachReportInEmail": true
+      },
+      "USER1": {
+        "volume": "DEFAULT VOLUME",
+        "name": "user1",
+        "password": "pass",
+        "emailAddress": "user1@xyz.com",
+        "homeFolder": "/Home/user1",
+        "viewPreference": "HTML",
+        "maxJobPriority": 500,
+        "sendNoticeForSuccess": true,
+        "sendNoticeForFailure": true,
+        "successNoticeExpiration": 7,
+        "failureNoticeExpiration": 5,
+        "sendEmailForSuccess": true,
+        "sendEmailForFailure": true,
+        "attachReportInEmail": true,
+        "privilegeTemplate": [
+          {
+            "volume": "DEFAULT VOLUME",
+            "accessRight": "RW",
+            "roleName": "role1"
+          },
+          {
+            "volume": "DEFAULT VOLUME",
+            "accessRight": "VR",
+            "roleName": "role2"
+          }
+        ],
+        "roles": [
+          "role1",
+          "role2"
+        ]
+      },
+      "USER2": {
+        "volume": "DEFAULT VOLUME",
+        "name": "user2",
+        "password": "pass",
+        "emailAddress": "user1@xyz.com",
+        "homeFolder": "/Home/user1",
+        "maxJobPriority": 300,
+        "sendNoticeForSuccess": false,
+        "sendNoticeForFailure": true,
+        "successNoticeExpiration": 100,
+        "failureNoticeExpiration": 500,
+        "sendEmailForSuccess": false,
+        "sendEmailForFailure": true,
+        "attachReportInEmail": true,
+        "privilegeTemplate": [
+          {
+            "volume": "DEFAULT VOLUME",
+            "accessRight": "RWE",
+            "userName": "user1"
+          },
+          {
+            "volume": "DEFAULT VOLUME",
+            "accessRight": "VREG",
+            "roleName": "role2"
+          }
+        ],
+        "roles": [
+          "role2"
+        ]
+      }
+    },
+    "roles": {
+      "ADMINISTRATORS": "Administrators",
+      "ROLE1": "role1",
+      "ROLE2": "role2",
+      "ROLE3": "role3"
+    },
+    "channels": {
+      "CHANNEL1": "channel1",
+      "CHANNEL2": "channel2",
+      "CHANNEL3": "channel3",
+      "CHANNEL4": "channel4"
+    }
+  },
+  "VOLUME1": {
+    "name": "Volume1",
+    "users": {
+      "ADMINISTRATOR": {
+        "volume": "VOLUME1",
+        "name": "Administrator",
+        "password": "",
+        "emailAddress": "Administrator@xyz.com",
+        "homeFolder": "/Home/Administrator",
+        "maxJobPriority": 1000,
+        "sendNoticeForSuccess": false,
+        "sendNoticeForFailure": true,
+        "successNoticeExpiration": 300,
+        "failureNoticeExpiration": -1,
+        "sendEmailForSuccess": false,
+        "sendEmailForFailure": true,
+        "attachReportInEmail": true
+      },
+      "USER1": {
+        "volume": "VOLUME1",
+        "name": "user1",
+        "password": "pass",
+        "emailAddress": "user1@xyz.com",
+        "homeFolder": "/Home/user1",
+        "viewPreference": "HTML",
+        "maxJobPriority": 500,
+        "sendNoticeForSuccess": false,
+        "sendNoticeForFailure": false,
+        "successNoticeExpiration": 7,
+        "failureNoticeExpiration": 5,
+        "sendEmailForSuccess": true,
+        "sendEmailForFailure": true,
+        "attachReportInEmail": false,
+        "privilegeTemplate": [
+          {
+            "volume": "VOLUME1",
+            "accessRight": "RW",
+            "roleName": "role1"
+          },
+          {
+            "volume": "VOLUME1",
+            "accessRight": "VR",
+            "roleName": "role2"
+          }
+        ],
+        "roles": [
+          "role2",
+          "role3"
+        ]
+      },
+      "USER2": {
+        "volume": "VOLUME1",
+        "name": "user2",
+        "password": "pass",
+        "emailAddress": "user1@xyz.com",
+        "homeFolder": "/Home/user1",
+        "maxJobPriority": 300,
+        "sendNoticeForSuccess": false,
+        "sendNoticeForFailure": true,
+        "successNoticeExpiration": 100,
+        "failureNoticeExpiration": 500,
+        "sendEmailForSuccess": false,
+        "sendEmailForFailure": true,
+        "attachReportInEmail": true,
+        "privilegeTemplate": [
+          {
+            "volume": "VOLUME1",
+            "accessRight": "RWE",
+            "userName": "user3"
+          },
+          {
+            "volume": "VOLUME1",
+            "accessRight": "VRE",
+            "roleName": "role2"
+          }
+        ],
+        "roles": [
+          "role2",
+		  "role4"
+        ]
+      },
+	  "USER3": {
+        "volume": "VOLUME1",
+        "name": "user3",
+        "password": "pass",
+        "emailAddress": "user3@xyz.com",
+        "homeFolder": "/Home/user3",
+        "viewPreference": "HTML",
+        "maxJobPriority": 300,
+        "sendNoticeForSuccess": true,
+        "sendNoticeForFailure": true,
+        "successNoticeExpiration": 123,
+        "failureNoticeExpiration": 456,
+        "sendEmailForSuccess": true,
+        "sendEmailForFailure": true,
+        "attachReportInEmail": false,
+        "privilegeTemplate": [
+          {
+            "volume": "VOLUME1",
+            "accessRight": "RW",
+            "roleName": "role1"
+          },
+          {
+            "volume": "VOLUME1",
+            "accessRight": "VR",
+            "roleName": "role2"
+          }
+        ],
+        "roles": [
+          "role2",
+          "role3"
+        ]
+      }
+    },
+    "roles": {
+      "ADMINISTRATORS": "Administrators",
+      "ROLE1": "role1",
+      "ROLE3": "role3",
+      "ROLE2": "role2"
+    },
+    "channels": {
+      "CHANNEL1": "channel1"
+    }
+  }
+}

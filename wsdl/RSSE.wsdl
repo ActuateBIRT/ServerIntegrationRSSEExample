@@ -1,0 +1,608 @@
+
+<definitions name="RSSEAPI" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:typens="http://schemas.actuate.com/actuate11/rsse" xmlns:wsdlns="http://schemas.actuate.com/actuate11/rsse/wsdl" targetNamespace="http://schemas.actuate.com/actuate11/rsse/wsdl">
+		<types>
+			<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://schemas.actuate.com/actuate11/rsse" elementFormDefault="qualified">
+				<xsd:complexType name="Header">
+					<xsd:sequence>
+						<xsd:element name="ServerHome" type="xsd:string"/>
+						<xsd:element name="LogFile" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="Version" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="TargetVolume" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="Volume" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="OrgId" type="xsd:string" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="Header" type="typens:Header"/>
+				<xsd:complexType name="Start">
+					<xsd:sequence>
+						<xsd:element name="ServerHome" type="xsd:string"/>
+						<xsd:element name="Volume" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="LogFile" type="xsd:string"/>
+						<xsd:element name="Version" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="Start" type="typens:Start"/>
+				<xsd:complexType name="StartResponse">
+					<xsd:sequence>
+						<xsd:element name="IntegrationLevel" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="ExternalProperties" type="typens:ArrayOfString" minOccurs="0"/>
+						<xsd:element name="RSSEVersion" type="xsd:string"/>
+						<xsd:element name="UserACLExternal" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="ConnectionPropertyExternal" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="SelectUsersOfRole" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="SelectGroupsOfUser" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="SupportGetTranslatedUserNames" type="xsd:boolean" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="StartResponse" type="typens:StartResponse"/>
+				<xsd:complexType name="ArrayOfString">
+					<xsd:sequence>
+						<xsd:element name="String" type="xsd:string" maxOccurs="unbounded" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:complexType name="Stop"/>
+				<xsd:element name="Stop" type="typens:Stop"/>
+				<xsd:complexType name="StopResponse"/>
+				<xsd:element name="StopResponse" type="typens:StopResponse"/>
+				<xsd:complexType name="Authenticate">
+					<xsd:sequence>
+						<xsd:element name="User" type="xsd:string"/>
+						<xsd:element name="Password" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="Credentials" type="xsd:base64Binary" minOccurs="0"/>
+						<xsd:element name="UserSetting" type="xsd:boolean" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="Authenticate" type="typens:Authenticate"/>
+				<xsd:complexType name="AuthenticateResponse">
+					<xsd:sequence>
+						<xsd:element name="UserAndProperties" type="typens:UserAndProperties" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="AuthenticateResponse" type="typens:AuthenticateResponse"/>
+				<xsd:complexType name="UserAndProperties">
+					<xsd:sequence>
+						<xsd:element name="User" type="typens:User"/>
+						<xsd:element name="PrivilegeTemplate" type="typens:ArrayOfPermission" minOccurs="0"/>
+						<xsd:element name="Channels" type="typens:ArrayOfString" minOccurs="0"/>
+						<xsd:element name="Roles" type="typens:ArrayOfString" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:complexType name="User">
+					<xsd:all>
+						<xsd:element name="Name" type="xsd:string"/>
+						<xsd:element name="EmailAddress" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="HomeFolder" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="LicenseOptions" type="typens:ArrayOfString" minOccurs="0"/>
+						<xsd:element name="ViewPreference" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="MaxJobPriority" type="xsd:long" minOccurs="0"/>
+						<xsd:element name="SendNoticeForSuccess" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="SendNoticeForFailure" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="SuccessNoticeExpiration" type="xsd:long" minOccurs="0"/>
+						<xsd:element name="FailureNoticeExpiration" type="xsd:long" minOccurs="0"/>
+						<xsd:element name="SendEmailForSuccess" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="SendEmailForFailure" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="AttachReportInEmail" type="xsd:boolean" minOccurs="0"/>
+					</xsd:all>
+				</xsd:complexType>
+				<xsd:complexType name="ArrayOfPermission">
+					<xsd:sequence>
+						<xsd:element name="Permission" type="typens:Permission" maxOccurs="unbounded" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:complexType name="Permission">
+					<xsd:sequence>
+						<xsd:element name="AccessRight" type="xsd:string"/>
+						<xsd:choice>
+							<xsd:element name="RoleName" type="xsd:string"/>
+							<xsd:element name="UserName" type="xsd:string"/>
+						</xsd:choice>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:complexType name="GetUserACL">
+					<xsd:sequence>
+						<xsd:element name="UserName" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="GetUserACL" type="typens:GetUserACL"/>
+				<xsd:complexType name="GetUserACLResponse">
+					<xsd:sequence>
+						<xsd:element name="ACL" type="typens:ArrayOfString"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="GetUserACLResponse" type="typens:GetUserACLResponse"/>
+				<xsd:complexType name="GetUserProperties">
+					<xsd:sequence>
+						<xsd:element name="Users" type="typens:ArrayOfString"/>
+						<xsd:element name="ResultDef" type="typens:ArrayOfString"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="GetUserProperties" type="typens:GetUserProperties"/>
+				<xsd:complexType name="GetUserPropertiesResponse">
+					<xsd:sequence>
+						<xsd:element name="ArrayOfUserAndProperties" type="typens:ArrayOfUserAndProperties"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="GetUserPropertiesResponse" type="typens:GetUserPropertiesResponse"/>
+				<xsd:complexType name="ArrayOfUserAndProperties">
+					<xsd:sequence>
+						<xsd:element name="UserAndProperties" type="typens:UserAndProperties" maxOccurs="unbounded" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:complexType name="DoesUserExist">
+					<xsd:sequence>
+						<xsd:element name="UserName" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="DoesUserExist" type="typens:DoesUserExist"/>
+				<xsd:complexType name="DoesUserExistResponse">
+					<xsd:sequence>
+						<xsd:element name="Exists" type="xsd:boolean"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="DoesUserExistResponse" type="typens:DoesUserExistResponse"/>
+				<xsd:complexType name="DoesRoleExist">
+					<xsd:sequence>
+						<xsd:element name="RoleName" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="DoesRoleExist" type="typens:DoesRoleExist"/>
+				<xsd:complexType name="DoesRoleExistResponse">
+					<xsd:sequence>
+						<xsd:element name="Exists" type="xsd:boolean"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="DoesRoleExistResponse" type="typens:DoesRoleExistResponse"/>
+				<xsd:complexType name="DoesGroupExist">
+					<xsd:sequence>
+						<xsd:element name="GroupName" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="DoesGroupExist" type="typens:DoesGroupExist"/>
+				<xsd:complexType name="DoesGroupExistResponse">
+					<xsd:sequence>
+						<xsd:element name="Exists" type="xsd:boolean"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="DoesGroupExistResponse" type="typens:DoesGroupExistResponse"/>
+				<xsd:complexType name="GetTranslatedRoleNames"/>
+				<xsd:element name="GetTranslatedRoleNames" type="typens:GetTranslatedRoleNames"/>
+				<xsd:complexType name="GetTranslatedRoleNamesResponse">
+					<xsd:sequence>
+						<xsd:element name="TranslatedRoleNames" type="typens:TranslatedRoleNames"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="GetTranslatedRoleNamesResponse" type="typens:GetTranslatedRoleNamesResponse"/>
+				<xsd:complexType name="TranslatedRoleNames">
+					<xsd:all>
+						<xsd:element name="Administrator" type="xsd:string"/>
+						<xsd:element name="Operator" type="xsd:string"/>
+						<xsd:element name="All" type="xsd:string"/>
+					</xsd:all>
+				</xsd:complexType>
+				<xsd:complexType name="GetTranslatedUserNames"/>
+				<xsd:element name="GetTranslatedUserNames" type="typens:GetTranslatedUserNames"/>
+				<xsd:complexType name="GetTranslatedUserNamesResponse">
+					<xsd:sequence>
+						<xsd:element name="TranslatedUserNames" type="typens:TranslatedUserNames"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="GetTranslatedUserNamesResponse" type="typens:GetTranslatedUserNamesResponse"/>
+				<xsd:complexType name="TranslatedUserNames">
+					<xsd:all>
+						<xsd:element name="Administrator" type="xsd:string"/>
+					</xsd:all>
+				</xsd:complexType>
+				<xsd:complexType name="SelectUsers">
+					<xsd:sequence>
+						<xsd:element name="FetchSize" type="xsd:int" minOccurs="0"/>
+						<xsd:choice>
+							<xsd:element name="QueryPattern" type="xsd:string"/>
+							<xsd:element name="RoleName" type="xsd:string"/>
+							<xsd:element name="GroupName" type="xsd:string"/>
+						</xsd:choice>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="SelectUsers" type="typens:SelectUsers"/>
+				<xsd:complexType name="SelectUsersResponse">
+					<xsd:sequence>
+						<xsd:element name="Users" type="typens:ArrayOfString"/>
+						<xsd:element name="TotalCount" type="xsd:int"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="SelectUsersResponse" type="typens:SelectUsersResponse"/>
+				<xsd:complexType name="SelectRoles">
+					<xsd:sequence>
+						<xsd:element name="FetchSize" type="xsd:int" minOccurs="0"/>
+						<xsd:choice>
+							<xsd:element name="QueryPattern" type="xsd:string"/>
+							<xsd:element name="UserName" type="xsd:string"/>
+						</xsd:choice>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="SelectRoles" type="typens:SelectRoles"/>
+				<xsd:complexType name="SelectRolesResponse">
+					<xsd:sequence>
+						<xsd:element name="Roles" type="typens:ArrayOfString"/>
+						<xsd:element name="TotalCount" type="xsd:int"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="SelectRolesResponse" type="typens:SelectRolesResponse"/>
+				<xsd:complexType name="SelectGroups">
+					<xsd:sequence>
+						<xsd:element name="FetchSize" type="xsd:int" minOccurs="0"/>
+						<xsd:choice>
+							<xsd:element name="QueryPattern" type="xsd:string"/>
+							<xsd:element name="UserName" type="xsd:string"/>
+						</xsd:choice>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="SelectGroups" type="typens:SelectGroups"/>
+				<xsd:complexType name="SelectGroupsResponse">
+					<xsd:sequence>
+						<xsd:element name="Groups" type="typens:ArrayOfString"/>
+						<xsd:element name="TotalCount" type="xsd:int"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="SelectGroupsResponse" type="typens:SelectGroupsResponse"/>
+				<xsd:complexType name="GetUsersToNotify"/>
+				<xsd:element name="GetUsersToNotify" type="typens:GetUsersToNotify"/>
+				<xsd:complexType name="GetUsersToNotifyResponse">
+					<xsd:sequence>
+						<xsd:element name="Users" type="typens:ArrayOfString"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="GetUsersToNotifyResponse" type="typens:GetUsersToNotifyResponse"/>
+				<xsd:complexType name="PassThrough">
+					<xsd:sequence>
+						<xsd:element name="Input" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="PassThrough" type="typens:PassThrough"/>
+				<xsd:complexType name="PassThroughResponse">
+					<xsd:sequence>
+						<xsd:element name="Output" type="xsd:string"/>
+						<xsd:element name="ReturnCode" type="xsd:int"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="PassThroughResponse" type="typens:PassThroughResponse"/>
+				<xsd:complexType name="GetConnectionProperties">
+					<xsd:sequence>
+						<xsd:element name="FileName" type="xsd:string"/>
+						<xsd:element name="UserName" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="GetConnectionProperties" type="typens:GetConnectionProperties"/>
+				<xsd:complexType name="GetConnectionPropertiesResponse">
+					<xsd:sequence>
+						<xsd:element name="ConnectionProperties" type="typens:ArrayOfPropertyValue"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:element name="GetConnectionPropertiesResponse" type="typens:GetConnectionPropertiesResponse"/>
+				<xsd:complexType name="ArrayOfPropertyValue">
+					<xsd:sequence>
+						<xsd:element name="PropertyValue" type="typens:PropertyValue" maxOccurs="unbounded" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+				<xsd:complexType name="PropertyValue">
+					<xsd:all>
+						<xsd:element name="Name" type="xsd:string"/>
+						<xsd:element name="Value" type="xsd:string" minOccurs="0"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:schema>
+		</types>
+		<message name="Start">
+			<part name="Request" element="typens:Start"/>
+		</message>
+		<message name="StartResponse">
+			<part name="Response" element="typens:StartResponse"/>
+		</message>
+		<message name="Stop">
+			<part name="Request" element="typens:Stop"/>
+		</message>
+		<message name="StopResponse">
+			<part name="Response" element="typens:StopResponse"/>
+		</message>
+		<message name="Authenticate">
+			<part name="Request" element="typens:Authenticate"/>
+		</message>
+		<message name="AuthenticateResponse">
+			<part name="Response" element="typens:AuthenticateResponse"/>
+		</message>
+		<message name="GetUserACL">
+			<part name="Request" element="typens:GetUserACL"/>
+		</message>
+		<message name="GetUserACLResponse">
+			<part name="Response" element="typens:GetUserACLResponse"/>
+		</message>
+		<message name="GetUserProperties">
+			<part name="Request" element="typens:GetUserProperties"/>
+		</message>
+		<message name="GetUserPropertiesResponse">
+			<part name="Response" element="typens:GetUserPropertiesResponse"/>
+		</message>
+		<message name="DoesUserExist">
+			<part name="Request" element="typens:DoesUserExist"/>
+		</message>
+		<message name="DoesUserExistResponse">
+			<part name="Response" element="typens:DoesUserExistResponse"/>
+		</message>
+		<message name="DoesRoleExist">
+			<part name="Request" element="typens:DoesRoleExist"/>
+		</message>
+		<message name="DoesRoleExistResponse">
+			<part name="Response" element="typens:DoesRoleExistResponse"/>
+		</message>
+		<message name="DoesGroupExist">
+			<part name="Request" element="typens:DoesGroupExist"/>
+		</message>
+		<message name="DoesGroupExistResponse">
+			<part name="Response" element="typens:DoesGroupExistResponse"/>
+		</message>
+		<message name="GetTranslatedRoleNames">
+			<part name="Request" element="typens:GetTranslatedRoleNames"/>
+		</message>
+		<message name="GetTranslatedRoleNamesResponse">
+			<part name="Response" element="typens:GetTranslatedRoleNamesResponse"/>
+		</message>
+		<message name="GetTranslatedUserNames">
+			<part name="Request" element="typens:GetTranslatedUserNames"/>
+		</message>
+		<message name="GetTranslatedUserNamesResponse">
+			<part name="Response" element="typens:GetTranslatedUserNamesResponse"/>
+		</message>
+		<message name="SelectUsers">
+			<part name="Request" element="typens:SelectUsers"/>
+		</message>
+		<message name="SelectUsersResponse">
+			<part name="Response" element="typens:SelectUsersResponse"/>
+		</message>
+		<message name="SelectRoles">
+			<part name="Request" element="typens:SelectRoles"/>
+		</message>
+		<message name="SelectRolesResponse">
+			<part name="Response" element="typens:SelectRolesResponse"/>
+		</message>
+		<message name="SelectGroups">
+			<part name="Request" element="typens:SelectGroups"/>
+		</message>
+		<message name="SelectGroupsResponse">
+			<part name="Response" element="typens:SelectGroupsResponse"/>
+		</message>
+		<message name="GetUsersToNotify">
+			<part name="Request" element="typens:GetUsersToNotify"/>
+		</message>
+		<message name="GetUsersToNotifyResponse">
+			<part name="Response" element="typens:GetUsersToNotifyResponse"/>
+		</message>
+		<message name="PassThrough">
+			<part name="Request" element="typens:PassThrough"/>
+		</message>
+		<message name="PassThroughResponse">
+			<part name="Response" element="typens:PassThroughResponse"/>
+		</message>
+		<message name="GetConnectionProperties">
+			<part name="Request" element="typens:GetConnectionProperties"/>
+		</message>
+		<message name="GetConnectionPropertiesResponse">
+			<part name="Response" element="typens:GetConnectionPropertiesResponse"/>
+		</message>
+		<portType name="ActuateSoapPort">
+			<operation name="start">
+				<input message="wsdlns:Start"/>
+				<output message="wsdlns:StartResponse"/>
+			</operation>
+			<operation name="stop">
+				<input message="wsdlns:Stop"/>
+				<output message="wsdlns:StopResponse"/>
+			</operation>
+			<operation name="authenticate">
+				<input message="wsdlns:Authenticate"/>
+				<output message="wsdlns:AuthenticateResponse"/>
+			</operation>
+			<operation name="getUserACL">
+				<input message="wsdlns:GetUserACL"/>
+				<output message="wsdlns:GetUserACLResponse"/>
+			</operation>
+			<operation name="getUserProperties">
+				<input message="wsdlns:GetUserProperties"/>
+				<output message="wsdlns:GetUserPropertiesResponse"/>
+			</operation>
+			<operation name="doesUserExist">
+				<input message="wsdlns:DoesUserExist"/>
+				<output message="wsdlns:DoesUserExistResponse"/>
+			</operation>
+			<operation name="doesRoleExist">
+				<input message="wsdlns:DoesRoleExist"/>
+				<output message="wsdlns:DoesRoleExistResponse"/>
+			</operation>
+			<operation name="doesGroupExist">
+				<input message="wsdlns:DoesGroupExist"/>
+				<output message="wsdlns:DoesGroupExistResponse"/>
+			</operation>
+			<operation name="getTranslatedRoleNames">
+				<input message="wsdlns:GetTranslatedRoleNames"/>
+				<output message="wsdlns:GetTranslatedRoleNamesResponse"/>
+			</operation>
+			<operation name="getTranslatedUserNames">
+				<input message="wsdlns:GetTranslatedUserNames"/>
+				<output message="wsdlns:GetTranslatedUserNamesResponse"/>
+			</operation>
+			<operation name="selectUsers">
+				<input message="wsdlns:SelectUsers"/>
+				<output message="wsdlns:SelectUsersResponse"/>
+			</operation>
+			<operation name="selectRoles">
+				<input message="wsdlns:SelectRoles"/>
+				<output message="wsdlns:SelectRolesResponse"/>
+			</operation>
+			<operation name="selectGroups">
+				<input message="wsdlns:SelectGroups"/>
+				<output message="wsdlns:SelectGroupsResponse"/>
+			</operation>
+			<operation name="getUsersToNotify">
+				<input message="wsdlns:GetUsersToNotify"/>
+				<output message="wsdlns:GetUsersToNotifyResponse"/>
+			</operation>
+			<operation name="passThrough">
+				<input message="wsdlns:PassThrough"/>
+				<output message="wsdlns:PassThroughResponse"/>
+			</operation>
+			<operation name="getConnectionProperties">
+				<input message="wsdlns:GetConnectionProperties"/>
+				<output message="wsdlns:GetConnectionPropertiesResponse"/>
+			</operation>
+		</portType>
+		<binding name="ActuateSoapBinding" type="wsdlns:ActuateSoapPort">
+			<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+			<operation name="start">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="literal" parts="Request"/>
+				</input>
+				<output>
+					<soap:body use="literal" parts="Response"/>
+				</output>
+			</operation>
+			<operation name="stop">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="literal" parts="Request"/>
+				</input>
+				<output>
+					<soap:body use="literal" parts="Response"/>
+				</output>
+			</operation>
+			<operation name="authenticate">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="literal" parts="Request"/>
+				</input>
+				<output>
+					<soap:body use="literal" parts="Response"/>
+				</output>
+			</operation>
+			<operation name="getUserACL">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="literal" parts="Request"/>
+				</input>
+				<output>
+					<soap:body use="literal" parts="Response"/>
+				</output>
+			</operation>
+			<operation name="getUserProperties">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="literal" parts="Request"/>
+				</input>
+				<output>
+					<soap:body use="literal" parts="Response"/>
+				</output>
+			</operation>
+			<operation name="doesUserExist">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="literal" parts="Request"/>
+				</input>
+				<output>
+					<soap:body use="literal" parts="Response"/>
+				</output>
+			</operation>
+			<operation name="doesRoleExist">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="literal" parts="Request"/>
+				</input>
+				<output>
+					<soap:body use="literal" parts="Response"/>
+				</output>
+			</operation>
+			<operation name="doesGroupExist">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="literal" parts="Request"/>
+				</input>
+				<output>
+					<soap:body use="literal" parts="Response"/>
+				</output>
+			</operation>
+			<operation name="getTranslatedRoleNames">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="literal" parts="Request"/>
+				</input>
+				<output>
+					<soap:body use="literal" parts="Response"/>
+				</output>
+			</operation>
+			<operation name="getTranslatedUserNames">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="literal" parts="Request"/>
+				</input>
+				<output>
+					<soap:body use="literal" parts="Response"/>
+				</output>
+			</operation>
+			<operation name="selectUsers">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="literal" parts="Request"/>
+				</input>
+				<output>
+					<soap:body use="literal" parts="Response"/>
+				</output>
+			</operation>
+			<operation name="selectRoles">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="literal" parts="Request"/>
+				</input>
+				<output>
+					<soap:body use="literal" parts="Response"/>
+				</output>
+			</operation>
+			<operation name="selectGroups">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="literal" parts="Request"/>
+				</input>
+				<output>
+					<soap:body use="literal" parts="Response"/>
+				</output>
+			</operation>
+			<operation name="getUsersToNotify">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="literal" parts="Request"/>
+				</input>
+				<output>
+					<soap:body use="literal" parts="Response"/>
+				</output>
+			</operation>
+			<operation name="passThrough">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="literal" parts="Request"/>
+				</input>
+				<output>
+					<soap:body use="literal" parts="Response"/>
+				</output>
+			</operation>
+			<operation name="getConnectionProperties">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="literal" parts="Request"/>
+				</input>
+				<output>
+					<soap:body use="literal" parts="Response"/>
+				</output>
+			</operation>
+		</binding>
+		<service name="RSSEAPI">
+			<port name="ActuateSoapPort" binding="wsdlns:ActuateSoapBinding">
+				<soap:address location="http://localhost:8000"/>
+			</port>
+		</service>
+	</definitions>

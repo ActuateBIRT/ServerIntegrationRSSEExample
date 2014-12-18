@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file was auto-generated from WSDL -->
+<!-- by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:33:49 IST) -->
+<serviceGroup>
+    <service name="SampleRSSE">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="com.actuate.rsse.example.SampleRSSEReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">com.actuate.rsse.example.SampleRSSE</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="getTranslatedUserNames" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://schemas.actuate.com/actuate11/rsse/wsdl">
+            <actionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/getTranslatedUserNamesRequest</actionMapping>
+            <outputActionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/getTranslatedUserNamesResponse</outputActionMapping>
+        </operation>
+        <operation name="stop" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://schemas.actuate.com/actuate11/rsse/wsdl">
+            <actionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/stopRequest</actionMapping>
+            <outputActionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/stopResponse</outputActionMapping>
+        </operation>
+        <operation name="authenticate" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://schemas.actuate.com/actuate11/rsse/wsdl">
+            <actionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/authenticateRequest</actionMapping>
+            <outputActionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/authenticateResponse</outputActionMapping>
+        </operation>
+        <operation name="selectUsers" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://schemas.actuate.com/actuate11/rsse/wsdl">
+            <actionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/selectUsersRequest</actionMapping>
+            <outputActionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/selectUsersResponse</outputActionMapping>
+        </operation>
+        <operation name="getConnectionProperties" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://schemas.actuate.com/actuate11/rsse/wsdl">
+            <actionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/getConnectionPropertiesRequest</actionMapping>
+            <outputActionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/getConnectionPropertiesResponse</outputActionMapping>
+        </operation>
+        <operation name="getUsersToNotify" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://schemas.actuate.com/actuate11/rsse/wsdl">
+            <actionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/getUsersToNotifyRequest</actionMapping>
+            <outputActionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/getUsersToNotifyResponse</outputActionMapping>
+        </operation>
+        <operation name="doesUserExist" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://schemas.actuate.com/actuate11/rsse/wsdl">
+            <actionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/doesUserExistRequest</actionMapping>
+            <outputActionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/doesUserExistResponse</outputActionMapping>
+        </operation>
+        <operation name="start" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://schemas.actuate.com/actuate11/rsse/wsdl">
+            <actionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/startRequest</actionMapping>
+            <outputActionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/startResponse</outputActionMapping>
+        </operation>
+        <operation name="passThrough" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://schemas.actuate.com/actuate11/rsse/wsdl">
+            <actionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/passThroughRequest</actionMapping>
+            <outputActionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/passThroughResponse</outputActionMapping>
+        </operation>
+        <operation name="selectGroups" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://schemas.actuate.com/actuate11/rsse/wsdl">
+            <actionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/selectGroupsRequest</actionMapping>
+            <outputActionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/selectGroupsResponse</outputActionMapping>
+        </operation>
+        <operation name="doesRoleExist" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://schemas.actuate.com/actuate11/rsse/wsdl">
+            <actionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/doesRoleExistRequest</actionMapping>
+            <outputActionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/doesRoleExistResponse</outputActionMapping>
+        </operation>
+        <operation name="selectRoles" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://schemas.actuate.com/actuate11/rsse/wsdl">
+            <actionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/selectRolesRequest</actionMapping>
+            <outputActionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/selectRolesResponse</outputActionMapping>
+        </operation>
+        <operation name="getUserProperties" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://schemas.actuate.com/actuate11/rsse/wsdl">
+            <actionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/getUserPropertiesRequest</actionMapping>
+            <outputActionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/getUserPropertiesResponse</outputActionMapping>
+        </operation>
+        <operation name="doesGroupExist" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://schemas.actuate.com/actuate11/rsse/wsdl">
+            <actionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/doesGroupExistRequest</actionMapping>
+            <outputActionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/doesGroupExistResponse</outputActionMapping>
+        </operation>
+        <operation name="getTranslatedRoleNames" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://schemas.actuate.com/actuate11/rsse/wsdl">
+            <actionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/getTranslatedRoleNamesRequest</actionMapping>
+            <outputActionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/getTranslatedRoleNamesResponse</outputActionMapping>
+        </operation>
+        <operation name="getUserACL" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://schemas.actuate.com/actuate11/rsse/wsdl">
+            <actionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/getUserACLRequest</actionMapping>
+            <outputActionMapping>http://schemas.actuate.com/actuate11/rsse/wsdl/ActuateSoapPort/getUserACLResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>
